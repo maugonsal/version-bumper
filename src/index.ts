@@ -35,7 +35,7 @@ async function main() {
       userName: options.username || 'Alejandro Arango [Bumper]',
       userEmail: options.email || 'alejandro.arango@crushyard.com',
       message: state.skip ? '[skip ci] ' : '' + `Updated version ${state.curVersion} -> ${state.newVersion}.`,
-      tag: state.tag ? { name: `release_${state.newVersion}-` } : undefined,
+      tag: state.tag ? { name: `release_${state.curAppVersion}-${state.newVersion}` } : undefined,
       token: core.getInput('github-token'),
       branch: state.branch
     };

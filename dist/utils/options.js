@@ -305,7 +305,7 @@ exports.getTrigger = getTrigger;
  */
 function getBumperState(options) {
     return __awaiter(this, void 0, void 0, function* () {
-        const trigger = getTrigger(), branch = getBranchFromTrigger(trigger), destBranch = getDestBranchFromTrigger(trigger), skip = getSkipOption(options), schemeRegExp = (0, utils_1.getSchemeRegex)(options), schemeDefinition = getSchemeDefinition(options), curVersion = yield (0, utils_1.getCurVersion)(options), tag = (0, utils_1.getTag)(options, trigger, branch, destBranch), newVersion = yield (0, utils_1.bumpVersion)(options, trigger, branch, destBranch), files = getFiles(options);
+        const trigger = getTrigger(), branch = getBranchFromTrigger(trigger), destBranch = getDestBranchFromTrigger(trigger), skip = getSkipOption(options), schemeRegExp = (0, utils_1.getSchemeRegex)(options), schemeDefinition = getSchemeDefinition(options), curVersion = yield (0, utils_1.getCurVersion)(options), curAppVersion = yield (0, utils_1.getCurVersion)(Object.assign(Object.assign({}, options), { versionFile: { path: options.versionFile.path } })), tag = (0, utils_1.getTag)(options, trigger, branch, destBranch), newVersion = yield (0, utils_1.bumpVersion)(options, trigger, branch, destBranch), files = getFiles(options);
         const state = {
             curVersion,
             newVersion,
@@ -316,7 +316,8 @@ function getBumperState(options) {
             trigger,
             branch,
             destBranch,
-            files
+            files,
+            curAppVersion
         };
         core.info(`State -> ${JSON.stringify(state)}`);
         return state;

@@ -262,6 +262,7 @@ export async function getBumperState(options: BumperOptionsFile): Promise<Bumper
     schemeRegExp = getSchemeRegex(options),
     schemeDefinition = getSchemeDefinition(options),
     curVersion = await getCurVersion(options),
+    curAppVersion = await getCurVersion({...options, versionFile: {path: options.versionFile.path}}),
     tag: boolean = getTag(options, trigger, branch, destBranch),
     newVersion = await bumpVersion(options, trigger, branch, destBranch),
     files = getFiles(options);
@@ -275,7 +276,8 @@ export async function getBumperState(options: BumperOptionsFile): Promise<Bumper
     trigger,
     branch,
     destBranch,
-    files
+    files,
+    curAppVersion
   };
   core.info(`State -> ${JSON.stringify(state)}`);
   return state;

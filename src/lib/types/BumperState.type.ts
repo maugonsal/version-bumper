@@ -1,6 +1,7 @@
 import { RuleTrigger, VersionFile } from "./OptionsFile.types";
 
 export default interface BumperState {
+  curAppVersion: string,      // current app version
   curVersion: string,         // current version
   newVersion: string,         // new bumped version
   skip: boolean,              // adds [SKIP] prefix to the commit message
