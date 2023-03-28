@@ -59,10 +59,10 @@ function main() {
                 return SUCCESS;
             }
             const GIT_OPTIONS = {
-                userName: options.username || 'version-bumper',
-                userEmail: options.email || 'bumper@boringday.co',
-                message: state.skip ? '[SKIP] ' : '' + `Updated version ${state.curVersion} -> ${state.newVersion}.`,
-                tag: state.tag ? { name: state.newVersion } : undefined,
+                userName: options.username || 'Alejandro Arango [Bumper]',
+                userEmail: options.email || 'alejandro.arango@crushyard.com',
+                message: state.skip ? '[skip ci] ' : '' + `Updated version ${state.curVersion} -> ${state.newVersion}.`,
+                tag: state.tag ? { name: `release_${state.newVersion}-` } : undefined,
                 token: core.getInput('github-token'),
                 branch: state.branch
             };
