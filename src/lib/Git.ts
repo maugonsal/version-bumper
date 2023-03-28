@@ -76,7 +76,7 @@ export default class Git {
    * @returns {Promise<Git>}
    */
   async commitStagedChanges(message: string): Promise<Git> {
-    await exec('git', ['commit', '-v', '-m', `"${message}"`], this.execOptions);
+    await exec('git', ['commit', '-v', '-m', `${message}`], this.execOptions);
     return this;
   }
 

@@ -88,7 +88,7 @@ class Git {
      */
     commitStagedChanges(message) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield (0, exec_1.exec)('git', ['commit', '-v', '-m', `"${message}"`], this.execOptions);
+            yield (0, exec_1.exec)('git', ['commit', '-v', '-m', `${message}`], this.execOptions);
             return this;
         });
     }
