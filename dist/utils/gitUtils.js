@@ -105,6 +105,9 @@ function commitAndPush(options) {
     return __awaiter(this, void 0, void 0, function* () {
         const git = yield commit(options);
         yield git.pushBranch(options.branch);
+        if (options.tag) {
+            yield git.pushTag(options.tag.name);
+        }
     });
 }
 exports.commitAndPush = commitAndPush;

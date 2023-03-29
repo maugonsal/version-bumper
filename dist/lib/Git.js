@@ -111,7 +111,18 @@ class Git {
      */
     pushBranch(branch) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield (0, exec_1.exec)('git', ['push', '-u', '--tags', this.remoteName, branch], this.execOptions);
+            yield (0, exec_1.exec)('git', ['push', '-u', this.remoteName, branch], this.execOptions);
+            return this;
+        });
+    }
+    /**
+     * Push branch to remote origin if set up
+     * @param branch
+     * @return {Promise<Git>}
+     */
+    pushTag(tag) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield (0, exec_1.exec)('git', ['push', this.remoteName, tag], this.execOptions);
             return this;
         });
     }
